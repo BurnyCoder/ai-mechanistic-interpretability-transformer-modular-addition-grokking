@@ -1,4 +1,4 @@
-# Grokking on Modular Addition — Mechanistic Interpretability
+# Grokking on Modular Addition in Mechanistic Interpretability
 
 Training a 1-layer transformer on modular addition (a + b mod 113) and analyzing the grokking phenomenon, where the model first memorizes the training data, then suddenly generalizes to the test set after continued training.
 
