@@ -2,7 +2,7 @@
 
 Training a 1-layer transformer on modular addition (a + b mod 113) and analyzing the grokking phenomenon — where the model first memorizes the training data, then suddenly generalizes to the test set after continued training.
 
-Based on [Neel Nanda's Grokking Demo](https://colab.research.google.com/github/TransformerLensOrg/TransformerLens/blob/main/demos/Grokking_Demo.ipynb) using [TransformerLens](https://github.com/TransformerLensOrg/TransformerLens).
+Mutating code from Neel Nanda, TransformerLens, devinterp, and others.
 
 ## Model Architecture
 
