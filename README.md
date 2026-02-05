@@ -2,7 +2,7 @@
 
 Training a 1-layer transformer on modular addition (a + b mod 113) and analyzing the grokking phenomenon — where the model first memorizes the training data, then suddenly generalizes to the test set after continued training.
 
-Mutating code from Neel Nanda, TransformerLens, devinterp, and others. https://colab.research.google.com/github/neelnanda-io/TransformerLens/blob/main/demos/Grokking_Demo.ipynb , https://colab.research.google.com/github/timaeus-research/devinterp/blob/main/examples/grokking.ipynb , https://github.com/mechanistic-interpretability-grokking/progress-measures-paper/blob/main/Grokking_Analysis.ipynb , https://colab.research.google.com/github/neelnanda-io/TransformerLens/blob/main/demos/Grokking_Demo.ipynb
+Mutating code from Neel Nanda, TransformerLens, devinterp, and others. https://colab.research.google.com/github/neelnanda-io/TransformerLens/blob/main/demos/Grokking_Demo.ipynb , https://colab.research.google.com/github/timaeus-research/devinterp/blob/main/examples/grokking.ipynb , https://github.com/mechanistic-interpretability-grokking/progress-measures-paper/blob/main/Grokking_Analysis.ipynb 
  
 ## Model Architecture
 
