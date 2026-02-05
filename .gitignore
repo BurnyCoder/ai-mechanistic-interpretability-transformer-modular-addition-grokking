@@ -1,0 +1,8 @@
+__pycache__/
+*.py[oc]
+.venv
+workspace/
+*.pth
+*.pt
+checkpoints/
+.claude/
