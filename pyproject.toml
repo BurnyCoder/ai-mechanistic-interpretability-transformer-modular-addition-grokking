@@ -1,0 +1,13 @@
+[project]
+name = "modular-addition-transformer"
+version = "0.1.0"
+description = "Training a 1-layer transformer on modular addition and analyzing the grokking phenomenon"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=2.14.4",
+    "einops>=0.8.2",
+    "fancy-einsum>=0.0.3",
+    "plotly>=6.5.2",
+    "transformer-lens>=2.17.0",
+    "transformers>=4.57.6",
+]

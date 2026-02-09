@@ -4,6 +4,12 @@ Training a 1-layer transformer on modular addition (a + b mod 113) and analyzing
 
 Mutating code from Neel Nanda, TransformerLens, devinterp, and others. https://colab.research.google.com/github/neelnanda-io/TransformerLens/blob/main/demos/Grokking_Demo.ipynb , https://colab.research.google.com/github/timaeus-research/devinterp/blob/main/examples/grokking.ipynb , https://github.com/mechanistic-interpretability-grokking/progress-measures-paper/blob/main/Grokking_Analysis.ipynb 
  
+## Setup
+
+```bash
+uv sync
+```
+
 ## Model Architecture
 
 - 1-layer transformer with 4 attention heads
