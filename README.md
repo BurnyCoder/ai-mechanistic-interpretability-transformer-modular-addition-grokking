@@ -7,6 +7,8 @@ Mutating code from Neel Nanda, TransformerLens, devinterp, and others. https://c
 ## Setup
 
 ```bash
+uv venv
+source .venv/bin/activate
 uv sync
 ```
 
