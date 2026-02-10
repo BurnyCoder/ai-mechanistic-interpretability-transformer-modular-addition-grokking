@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Training a 1-layer transformer on modular addition and analyzing the grokking phenomenon"
 requires-python = ">=3.12"
 dependencies = [
+    "nbformat>=5.10.4",
     "transformer-lens>=2.17.0",
     "neel-plotly @ git+https://github.com/neelnanda-io/neel-plotly.git",
 ]
