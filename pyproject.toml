@@ -7,4 +7,5 @@ dependencies = [
     "nbformat>=5.10.4",
     "transformer-lens>=2.17.0",
     "neel-plotly @ git+https://github.com/neelnanda-io/neel-plotly.git",
+    "jupyter>=1.1.1",
 ]
