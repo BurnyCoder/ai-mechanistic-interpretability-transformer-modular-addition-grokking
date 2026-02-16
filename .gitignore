@@ -6,5 +6,4 @@ workspace/
 *.pt
 checkpoints/
 .claude/
-
-grokking-transformerlens-explained-alot.ipynb
+.jupyter_ystore.db
