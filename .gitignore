@@ -7,3 +7,4 @@ workspace/
 checkpoints/
 .claude/
 .jupyter_ystore.db
+.ipynb_checkpoints/
