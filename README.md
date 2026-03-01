@@ -20,6 +20,10 @@ uv sync
 - Vocabulary: 114 tokens (0–112 for numbers, 113 for `=`)
 - Input format: `[a, b, =]` → predicts `(a + b) mod 113`
 
+## Pretrained Model
+
+The trained model checkpoint is available on Hugging Face: [BurnyCoder/grokking-modular-addition-transformer](https://huggingface.co/BurnyCoder/grokking-modular-addition-transformer)
+
 ## Training Setup
 
 - 30% of all p² = 12,769 input pairs used for training
