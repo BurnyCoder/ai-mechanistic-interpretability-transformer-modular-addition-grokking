@@ -56,6 +56,14 @@ Training a 1-layer transformer on modular addition (a + b mod 113) and analyzing
 
 Mutating code from Neel Nanda, TransformerLens, devinterp, and others. https://colab.research.google.com/github/neelnanda-io/TransformerLens/blob/main/demos/Grokking_Demo.ipynb , https://colab.research.google.com/github/timaeus-research/devinterp/blob/main/examples/grokking.ipynb , https://github.com/mechanistic-interpretability-grokking/progress-measures-paper/blob/main/Grokking_Analysis.ipynb 
  
+## Environment
+
+**Always activate the local venv before running any commands:**
+
+```bash
+source .venv/bin/activate
+```
+
 ## Setup
 
 ```bash
@@ -104,7 +112,37 @@ The transformer learns a Fourier-based algorithm:
 3. **MLP neurons** compute `cos(ω(a+b))` and `sin(ω(a+b))` via trig identities
 4. **Unembed** maps these to logits approximating `cos(ω(a+b-c))` for each output token `c`
 
+## Paper: Progress Measures for Grokking via Mechanistic Interpretability
+
+The file `paper.pdf` contains the primary reference paper (Nanda et al., ICLR 2023). Key details:
+
+- **Authors**: Neel Nanda, Lawrence Chan, Tom Lieberum, Jess Smith, Jacob Steinhardt
+- **Published**: ICLR 2023 (arXiv:2301.05217)
+- **Core contribution**: Fully reverse-engineers the algorithm learned by small transformers on modular addition, defines continuous progress measures that reveal grokking as a gradual process rather than a sudden shift
+
+### Paper's Key Findings
+
+- **Fourier Multiplication Algorithm**: The learned algorithm maps inputs onto a circle using discrete Fourier transforms, then uses trigonometric identities to convert addition to rotation. The model computes `cos(wk(a+b-c))` for key frequencies `wk = 2kπ/P`, which constructively interferes at the correct answer `c* = a+b mod P`
+- **Key frequencies** (mainline model with P=113): `k ∈ {14, 35, 41, 42, 52}`. The embedding matrix `WE` and neuron-logit map `WL = WU·Wout` are sparse in the Fourier basis, concentrated on these frequencies
+- **Neuron-logit map `WL`**: Approximately rank 10, with each direction corresponding to sin/cos of one of 5 key frequencies. Projecting MLP activations onto these directions yields `cos(wk(a+b))` and `sin(wk(a+b))` with >90% variance explained
+- **Four lines of evidence**: (1) periodic structure in weights/activations, (2) `WL` decomposition matches trig identities, (3) individual neurons are degree-2 polynomials of sin/cos at a single frequency, (4) ablating key frequencies reduces performance to chance while ablating other 95% of frequencies slightly improves it
+- **Three training phases**: Memorization → Circuit formation → Cleanup. The sudden test accuracy jump occurs during cleanup, *after* the generalizing mechanism is already learned. Progress measures (restricted loss, excluded loss) vary smoothly throughout
+- **Robustness**: The Fourier multiplication algorithm is consistently learned across different random seeds, model depths (1-2 layers), training data fractions (10-90%), and prime moduli (P=53, 109, 113). Different seeds use different key frequencies but the same algorithmic structure
+- **Regularization**: Weight decay is crucial for grokking. Without it, the model memorizes but never generalizes. Dropout also works; L1 regularization does not
+- **Attention mechanism**: Each head's attention pattern is a lookup table on input token `a`, expressible as `σ(Cj[a] - Cj[b])` where `Cj` is sparse in the Fourier basis. The OV circuits transfer Fourier components to the residual stream
+
+### Paper's Notation
+
+- `P` = prime modulus (113 in mainline)
+- `WE` = embedding matrix (d × P)
+- `WU` = unembedding matrix (P × d)
+- `Wout` = MLP output matrix (d × n)
+- `WL = WU·Wout` = neuron-logit map (P × n)
+- `wk = 2kπ/P` = frequency for index k
+- `MLP(a,b)` = MLP activations for inputs a, b
+- `Logits(a,b) ≈ WL · MLP(a,b)` (skip connection is negligible)
+
 ## References
 
-- [Progress Measures for Grokking via Mechanistic Interpretability](https://arxiv.org/abs/2301.05217) (Nanda et al., 2023)
+- [Progress Measures for Grokking via Mechanistic Interpretability](https://arxiv.org/abs/2301.05217) (Nanda et al., ICLR 2023) — `paper.pdf`
 - [Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets](https://arxiv.org/abs/2201.02177) (Power et al., 2022)
