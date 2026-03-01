@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "jupyter-mcp-server"
+  ],
+  "enableAllProjectMcpServers": true
+}
