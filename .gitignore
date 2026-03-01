@@ -5,6 +5,6 @@ workspace/
 *.pth
 *.pt
 checkpoints/
-.claude/
+.claude/memory/
 .jupyter_ystore.db
 .ipynb_checkpoints/

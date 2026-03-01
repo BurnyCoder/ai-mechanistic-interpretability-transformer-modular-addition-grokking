@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "jupyter-mcp-server": {
+      "command": "uv",
+      "args": ["run", "--project", "~/jupyter-mcp-server", "jupyter-mcp-server"],
+      "env": {
+        "JUPYTER_URL": "http://localhost:8888",
+        "JUPYTER_TOKEN": ""
+      }
+    }
+  }
+}
